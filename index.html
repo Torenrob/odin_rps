@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>Rock, Paper, Scissors</title>
+    <script>
+
+      function getComputerChoice() {
+        let choice = Math.floor(Math.random() * 3);
+        switch (choice) {
+          case 0:
+            return 'rock'
+            break;
+          case 1:
+            return 'paper'
+            break;
+          case 2:
+            return 'scissors'
+            break;
+          default:
+            'Error'
+        }
+      }
+
+      function getPlayerChoice() {
+        let choice = prompt('Choose: Rock, Paper, or Scissors:');
+        if (!(choice.toLowerCase() == 'paper' || choice.toLowerCase() == 'rock' || choice.toLowerCase() == 'scissors')) {
+          alert('ERROR!')
+          return
+        } else {
+          return choice.toLowerCase();
+        }
+      }
+
+      function getWinner(plyrSelection, cmptrSelection) {
+        if (plyrSelection == cmptrSelection) {
+          return 'Tie';
+        } else {
+          switch (plyrSelection) {
+            case 'rock':
+              switch (cmptrSelection) {
+                case 'paper':
+                  return `You lose! ${cmptrSelection} beats ${plyrSelection}.`
+                  break;
+                case 'scissors':
+                  return `You win! ${plyrSelection} beats ${cmptrSelection}!`
+                  break;
+              }
+            case 'paper':
+              switch (cmptrSelection) {
+                case 'scissors':
+                  return `You lose! ${cmptrSelection} beats ${plyrSelection}.`
+                  break;
+                case 'rock':
+                  return `You win! ${plyrSelection} beats ${cmptrSelection}!`
+                  break;
+              }
+            case 'scissors':
+              switch (cmptrSelection) {
+                case 'rock':
+                  return `You lose! ${cmptrSelection} beats ${plyrSelection}.`
+                  break;
+                case 'paper':
+                  return `You win! ${plyrSelection} beats ${cmptrSelection}!`
+                  break;
+              }
+          }
+        }
+      }
+
+      function playRound() {
+        return getWinner(getPlayerChoice(), getComputerChoice())
+      }
+    </script>
+  </head>
+
+  <body>
+
+  </body>
+
+</html>
